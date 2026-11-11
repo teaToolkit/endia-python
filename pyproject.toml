@@ -1,0 +1,69 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "endia"
+version = "0.0.2"
+description = "Client for EastIndia, which runs Windows desktop test machines that tests drive like Docker containers. Early preview."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "teaToolkit" }]
+dependencies = [
+	"cattrs>=24.1",
+	"httpx>=0.27,<1",
+	"websockets>=15",
+]
+classifiers = [
+	"Development Status :: 2 - Pre-Alpha",
+	"Programming Language :: Python :: 3",
+	"Typing :: Typed",
+]
+
+[dependency-groups]
+test = [
+	"aiohttp>=3.10",
+	"cryptography>=43",
+	"pytest>=8",
+]
+lint = [
+	"mypy>=1.13",
+	"ruff>=0.8",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/endia"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "README.md", "pyproject.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: needs the EastIndia service; runs only when EASTINDIA_LIVE=1"]
+addopts = "--strict-markers"
+filterwarnings = ["error"]
+
+[tool.mypy]
+strict = true
+python_version = "3.10"
+files = ["src", "tests"]
+
+[tool.ruff]
+line-length = 140
+target-version = "py310"
+include = ["src/**/*.py", "tests/**/*.py"]
+
+[tool.ruff.format]
+indent-style = "tab"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "PL", "PT", "N"]
+ignore = [
+	"W191",    # tabs indent the code, as in every EastIndia source file
+	"E501",    # the formatter decides line length
+	"PLR0913", # a route's options are keyword arguments, as many as the route has
+	"PLR2004", # tests compare with literal expected values
+	"E731",    # a short lambda reads better than a nested def in one place
+]
