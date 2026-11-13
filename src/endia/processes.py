@@ -8,7 +8,7 @@ on the wrong process. Pass the ``started`` time exactly as a record of this SDK 
 from __future__ import annotations
 
 from collections.abc import Iterator
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 
 from . import _wire
@@ -80,6 +80,9 @@ class ProcessStopResult:
 	"""``closed`` when it closed when asked, ``ended`` when it was ended, ``alreadyExited`` when it had ended before."""
 
 	exit_code: int | None = None
+	ended_descendants: list[ProcessSummary] = field(default_factory=list)
+	"""The processes the service ended besides the one named when a stop covers the whole process tree, deepest first. The service
+	does this only when asked with ``tree=true``, which ``stop`` does not send, so the list is empty."""
 
 
 @dataclass(frozen=True, kw_only=True, slots=True)

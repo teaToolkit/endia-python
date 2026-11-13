@@ -52,6 +52,11 @@ class HostStats:
 	cpu_percent: float | None = None
 	memory_total_bytes: int | None = None
 	memory_available_bytes: int | None = None
+	disk_bytes_per_second: float | None = None
+	"""The bytes all the host's physical disks read and wrote each second, together, over the last interval of readings."""
+
+	network_bytes_per_second: float | None = None
+	"""The bytes all the host's physical network adapters received and sent each second, together, over the last interval of readings."""
 
 
 class StatsClient:

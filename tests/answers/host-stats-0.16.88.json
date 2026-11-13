@@ -1,0 +1,12 @@
+{
+	"read": "2026-11-13T08:58:33.2822951Z",
+	"logicalProcessors": 24,
+	"cpuPercent": 6.447404314383669,
+	"memoryTotalBytes": 67813310464,
+	"memoryAvailableBytes": 14545326080,
+	"memoryReserveBytes": 12884901888,
+	"machinesMemoryBytes": 2147483648,
+	"diskBytesPerSecond": 91526818.69639885,
+	"networkBytesPerSecond": 56420.059582919566,
+	"unavailable": []
+}

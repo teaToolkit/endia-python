@@ -70,6 +70,13 @@ def test_version_names_the_service_and_api_version_1(client: EastIndiaClient) ->
 	assert version.version
 
 
+def test_info_describes_the_host_and_the_configuration_in_effect(client: EastIndiaClient) -> None:
+	info = client.info()
+
+	assert info.server_version == client.version().version
+	assert info.config.listen_port > 0
+
+
 def test_image_list_and_inspect_agree_on_the_base(client: EastIndiaClient) -> None:
 	listed = {tag: image.id for image in client.images.list() for tag in image.repo_tags}
 

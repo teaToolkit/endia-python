@@ -1,0 +1,9 @@
+{
+	"version": "0.16.88",
+	"apiVersion": "1",
+	"gitCommit": "5dff5f3",
+	"built": "2026-11-11T22:54:35.0000000Z",
+	"os": "windows",
+	"arch": "amd64",
+	"guestServiceVersion": "0.16.88"
+}

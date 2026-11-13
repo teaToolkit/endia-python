@@ -65,6 +65,7 @@ class HostConfigurationView:
 	machine_memory_ceiling_mib: int = wire("machineMemoryCeilingMiB")
 	machine_processor_count: int
 	max_layer_depth: int
+	build_cache_keep_gib: int = wire("buildCacheKeepGiB")
 	max_parallel_boots: int
 	guest_connect_timeout_seconds: int
 	guest_ready_timeout_seconds: int
@@ -84,15 +85,12 @@ class HostConfigurationView:
 	stats_interval_seconds: int
 	operation_retention_days: int
 	idempotency_retention_hours: int
+	purpose_history_max_entries: int
 	service_log_retention_days: int
 	retention_sweep_minutes: int
 	max_context_bytes: int
 	client_certificate_validity_days: int
 	evaluation_warning_days: int
-	hyper_v_access_folder: str | None
-	hyper_v_endpoint: str | None
-	host_path_map: str | None
-	guest_relay: str | None
 	hyper_v_request_timeout_seconds: int
 	hyper_v_job_timeout_seconds: int
 	turn_off_timeout_seconds: int

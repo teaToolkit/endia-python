@@ -103,6 +103,8 @@ class MachineVolumeDetail:
 	name: str
 	target: str
 	read_only: bool
+	scsi_location: int
+	"""The location on SCSI controller 0 where the volume's disk is attached: 1 for the first volume, 2 for the next, and so on."""
 
 
 @dataclass(frozen=True, kw_only=True, slots=True)

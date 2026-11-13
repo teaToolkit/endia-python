@@ -47,19 +47,12 @@ def test_member_whose_case_differs_from_the_rule_is_read_by_its_own_name() -> No
 		("machine_memory_mib", "machineMemoryMiB"),
 		("machine_memory_floor_mib", "machineMemoryFloorMiB"),
 		("machine_memory_ceiling_mib", "machineMemoryCeilingMiB"),
+		("build_cache_keep_gib", "buildCacheKeepGiB"),
 		("volume_size_gib", "volumeSizeGiB"),
 	]:
 		del wire[camel(field)]
 		wire[member] = 7
-	for nullable in (
-		"image_folder",
-		"guest_programs_folder",
-		"default_address_pools",
-		"hyper_v_access_folder",
-		"hyper_v_endpoint",
-		"host_path_map",
-		"guest_relay",
-	):
+	for nullable in ("image_folder", "guest_programs_folder", "default_address_pools"):
 		wire[camel(nullable)] = None
 	wire["listenAddress"] = wire["resourcePrefix"] = wire["internetSwitch"] = "x"
 
